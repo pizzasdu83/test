@@ -13,7 +13,7 @@ export function fetchValue(input: FetchInput): void {
     if (value.length === 0) {
         Notifier.sendJson<ErrorMessage>({
             success: false,
-            message: `key '${input.key}' not found in table`
+            message: `key '${input.key}' not found in table bb`
         });
     } else {
         Notifier.sendJson<FetchOutput>({
