@@ -163,5 +163,5 @@
 		
 		.store-btn { background: #ddd; }
 		.accept-btn { background: #4CAF50; color: white; }
-		.clrInterval { background: linear-gradient(to top right,rgba(0, 0, 255, 1) 0%, rgba(255, 0, 0, 1) 100%); }
+		.clrInterval { background: linear-gradient(to top right,rgba(0, 0, 255, 1) 0%, rgba(255, 0, 0, 1) 100%); color:#ffffff; }
 		.refuse-btn { background: #f44336; color: white; }
