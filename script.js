@@ -164,7 +164,7 @@
 		}
 
 		function applyBackground() {
-			let mode = getCookie("bgmode") || "free";
+			let mode = getCookie("bgmode") || "r34";
 
 
 			document.body.classList.remove("color", "gradient", "image");
@@ -173,16 +173,18 @@
 			document.body.style.backgroundImage = "";
 
 			if (mode === "free") {
-				let color = getCookie("bgcolor") || "#ffffff";
+				let color = getCookie("bgcolor") || "#474747";
 				document.body.classList.add("color");
 				document.body.style.backgroundColor = color;
 				if (colorPicker) colorPicker.value = color; 
 				document.body.style.animationPlayState = "paused";
+				document.body.style.backgroundColor = "color";
 			} else if (mode === "preset-gradient") {
 				document.body.classList.add("gradient");
 				document.body.style.animationPlayState = "paused";
 			} else if (mode === "r34") {
 				document.body.classList.add("r34");
+				document.body.style.backgroundColor = "hsl(114, 56%, 77%)";
 				document.body.style.animationPlayState = "paused";
 			} else if (mode === "preset-image") {
 				document.body.classList.add("image");
