@@ -174,10 +174,10 @@
 
 			if (mode === "free") {
 				let color = getCookie("bgcolor") || "#474747";
+				document.body.style.animation = "none";
 				document.body.classList.add("color");
 				document.body.style.backgroundColor = color;
 				if (colorPicker) colorPicker.value = color; 
-				document.body.style.animation = "none";
 			} else if (mode === "preset-gradient") {
 				document.body.classList.add("gradient");
 				document.body.style.animation = "none";
