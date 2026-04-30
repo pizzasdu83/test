@@ -167,7 +167,7 @@
 			let mode = getCookie("bgmode") || "r34";
 
 
-			document.body.classList.remove("color", "gradient", "image");
+			document.body.classList.remove("color", "gradient", "image", "fallin", "preview", "r34");
 			document.body.style.background = "";
 			document.body.style.backgroundColor = "";
 			document.body.style.backgroundImage = "";
