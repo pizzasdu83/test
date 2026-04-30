@@ -4,7 +4,6 @@
   			font-family: Arial, sans-serif;
   			transition: background-color 0.3s ease;
 			overflow: hidden;
-			animation-play-state: paused;
 		}
 		body.gradient {
 			font-family: Arial, sans-serif;
@@ -14,7 +13,6 @@
 			height: 100vh;
   			background: linear-gradient(to top right,rgba(0, 0, 255, 1) 0%, rgba(255, 0, 0, 1) 100%);
 			overflow: hidden;
-			animation-play-state: paused;
 		}
 		body.r34 {
   			margin: 0;
@@ -23,7 +21,6 @@
   			font-family: Arial, sans-serif;
   			transition: background-color 0.3s ease;
 			overflow: hidden;
-			animation-play-state: paused;
 		}
 		body.image {
 			font-family: Arial, sans-serif;
@@ -33,7 +30,6 @@
 			height: 100vh;
 			background-image:url("https://raw.githubusercontent.com/pizzasdu83/ressources/main/suyu__Pattern-Background.png"); no-repeat;
 			overflow: hidden;
-			animation-play-state: paused;
 		}
 		body.preview {
 			margin: 0;
@@ -42,7 +38,6 @@
 			background-size: cover;
 			background-position: center;
 			overflow: hidden;
-			animation: arcEnCiel 0s linear 0;
 		}
 		body.fallin {
             margin: 0;
@@ -168,5 +163,5 @@
 		
 		.store-btn { background: #ddd; }
 		.accept-btn { background: #4CAF50; color: white; }
-		.clrInterval { backgroud: linear-gradient(to top right,rgba(0, 0, 255, 1) 0%, rgba(255, 0, 0, 1) 100%); }
+		.clrInterval { background: linear-gradient(to top right,rgba(0, 0, 255, 1) 0%, rgba(255, 0, 0, 1) 100%); }
 		.refuse-btn { background: #f44336; color: white; }
