@@ -112,26 +112,24 @@
 			closePopup();
 		}
 
-		function refuseCookies() {
-			alert("You denied cookies >:3");
-    		document.cookie.split(";").forEach(cookie => {
+		function deleteAllCookies() {
+			const cookies = document.cookie.split(";");
+
+			for (let cookie of cookies) {
 				const name = cookie.split("=")[0].trim();
 
-				const paths = ["/", location.pathname];
-				const domains = [location.hostname, "." + location.hostname];
+				// suppression simple (suffit dans 95% des cas)
+				document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
+				document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;SameSite=Lax`;
+				document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;SameSite=Lax;Secure`;
+			}
+		}
 
-					paths.forEach(path => {
-					domains.forEach(domain => {
+		function refuseCookies() {
+			alert("You denied cookies >:3");
+    		deleteAllCookies();
 
-						// sans domain
-						document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=${path};SameSite=Lax;Secure`;
-
-						// avec domain
-						document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=${path};domain=${domain};SameSite=Lax;Secure`;
-
-					});
-				});
-			});
+			localStorage.clear();
 			document.body.style.backgroundColor = "";
 			closePopup();
 		}
