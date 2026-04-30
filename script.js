@@ -120,9 +120,15 @@
 				const paths = ["/", location.pathname];
 				const domains = [location.hostname, "." + location.hostname];
 
-				paths.forEach(path => {
+					paths.forEach(path => {
 					domains.forEach(domain => {
-						document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=${path};domain=${domain}`;
+
+						// sans domain
+						document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=${path};SameSite=Lax;Secure`;
+
+						// avec domain
+						document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=${path};domain=${domain};SameSite=Lax;Secure`;
+
 					});
 				});
 			});
