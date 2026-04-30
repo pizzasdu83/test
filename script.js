@@ -114,11 +114,11 @@
 
 		function refuseCookies() {
 			alert("You denied cookies >:3");
-
-			setCookie("cookies", 0, 7);
-			setCookie("perClick", 1, 7);
-			setCookie("autoClick", 0, 7);
-			eraseCookie("bgcolor");
+    		document.cookie.split(';').forEach(cookie => {
+        		const eqPos = cookie.indexOf('=');
+        		const name = eqPos > -1 ? cookie.substring(0, eqPos) : cookie;
+        		document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
+   		 	});
 			document.body.style.backgroundColor = "";
 			closePopup();
 		}
