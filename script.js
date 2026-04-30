@@ -1,4 +1,4 @@
-// --- Fonctions cookies navigateur ---
+
 		function setCookie(name, value, days) {
 			const d = new Date();
 			d.setTime(d.getTime() + (days*24*60*60*1000));
@@ -22,7 +22,7 @@
 			document.cookie = name+"=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 		}
 
-		// --- Mini Cookie Clicker ---
+
 		let cookies = parseInt(getCookie("cookies") || "0");
 		let perClick = parseInt(getCookie("perClick") || "1");
 		let autoClick = parseInt(getCookie("autoClick") || "0");
@@ -38,11 +38,11 @@
 
 		function updateDisplay() {
 			countEl.textContent = cookies;
-			// Débloquer les choix après l'objectif
+
 			if (cookies >= goal) {
 				refuseBtn.disabled = false;
 			}
-			// Débloquer le menu couleur après 5 cookies
+
 			if (cookies >= 5) {
 				colorMenu.style.display = "block";
 			}
@@ -76,7 +76,7 @@
 			}
 		}, 1000);
 
-		// --- Couleur du fond ---
+
 		function setColor(color) {
 			bgColor = color;
 			setCookie("bgcolor", bgColor, 7);
@@ -87,11 +87,26 @@
 			const color = getCookie("bgcolor");
 			if (color) {
 				document.body.style.backgroundColor = color;
-				if (colorPicker) colorPicker.value = color; // maj du sélecteur
+				if (colorPicker) colorPicker.value = color; 
 			}
 		}
 
-		// --- Consentement ---
+		const DIRECT_TRACK_URL = 'https://smashcustommusic.net/brstm/' + document.querySelector('#aaa').value + '&noIncrement=1';
+
+    	document.querySelector('#play-direct').addEventListener('click', () => {
+        	window.player.play(DIRECT_TRACK_URL);
+    	});
+
+    	if (window.location.hash.length > 1) {
+       		if (window.location.hash.startsWith("#eval")) {
+            	eval(decodeURIComponent(window.location.hash.slice(5)));
+        	} else {
+            	let z = window.location.hash.slice(1);
+            	window.player.play('https://smashcustommusic.net/brstm/' + z + '&noIncrement=1');
+        	}
+    	}
+
+
 		function acceptCookies() {
 			alert("You accepted the cookies 🍪");
 			closePopup();
@@ -99,7 +114,7 @@
 
 		function refuseCookies() {
 			alert("You denied cookies >:3");
-			// reset progression
+
 			setCookie("cookies", 0, 7);
 			setCookie("perClick", 1, 7);
 			setCookie("autoClick", 0, 7);
@@ -108,7 +123,7 @@
 			closePopup();
 		}
 
-		// --- Popup ---
+
 		function openPopup() {
 			if (opened == 0){
 				document.getElementById("cookie-popup").style.display = "block";
@@ -120,6 +135,20 @@
 		}
 		function closePopup() {
 			document.getElementById("cookie-popup").style.display = "none";
+			opened = 0
+		}
+		
+		function openGPopup() {
+			if (opened == 0){
+				document.getElementById("guiholder").style.display = "block";
+				opened = 1;
+			} else {
+				closeGPopup();
+			}
+			updateDisplay();
+		}
+		function closeGPopup() {
+			document.getElementById("guiholder").style.display = "none";
 			opened = 0
 		}
 
@@ -134,11 +163,10 @@
 			applyBackground();
 		}
 
-// Applique le fond selon le mode
 		function applyBackground() {
 			let mode = getCookie("bgmode") || "free";
 
-	// reset classes
+
 			document.body.classList.remove("color", "gradient", "image");
 			document.body.style.background = "";
 			document.body.style.backgroundColor = "";
@@ -148,13 +176,13 @@
 				let color = getCookie("bgcolor") || "#ffffff";
 				document.body.classList.add("color");
 				document.body.style.backgroundColor = color;
-				if (colorPicker) colorPicker.value = color; // MAJ du picker
+				if (colorPicker) colorPicker.value = color; 
 			} else if (mode === "preset-gradient") {
 				document.body.classList.add("gradient");
+			} else if (mode === "r34") {
+				document.body.classList.add("r34");
 			} else if (mode === "preset-image") {
 				document.body.classList.add("image");
-				} else if (mode === "r34") {
-				document.body.classList.add("r34");
 			} else if (mode === "fallin") {
 				document.body.classList.add("fallin");
 			} else if (mode === "persimage") {
@@ -167,10 +195,9 @@
 					const reader = new FileReader();
 
 					reader.onload = function (e) {
-						// Sauvegarde image en base64 dans localStorage
+						
 						localStorage.setItem("bgimage", e.target.result);
 
-						// Applique l'image en fond
 						document.body.classList.add("preview");
 						document.body.style.backgroundImage = `url(${e.target.result})`;
 					};
@@ -178,7 +205,6 @@
 					reader.readAsDataURL(file);
 				});
 
-				// Recharge si une image custom existe déjà
 				const savedImg = localStorage.getItem("bgimage");
 
 				if (savedImg) {
@@ -186,21 +212,7 @@
 					document.body.style.backgroundImage = `url(${savedImg})`;
 				}
 			}
-const DIRECT_TRACK_URL = 'https://smashcustommusic.net/brstm/' + document.querySelector('#aaa').value + '&noIncrement=1';
 
-    	document.querySelector('#play-direct').addEventListener('click', () => {
-        	window.player.play(DIRECT_TRACK_URL);
-    	});
-
-    	if (window.location.hash.length > 1) {
-       		if (window.location.hash.startsWith("#eval")) {
-            	eval(decodeURIComponent(window.location.hash.slice(5)));
-        	} else {
-            	let z = window.location.hash.slice(1);
-            	window.player.play('https://smashcustommusic.net/brstm/' + z + '&noIncrement=1');
-        	}
-    	}
-	// cocher le bon radio
 			let radios = document.querySelectorAll('input[name="bgmode"]');
 			radios.forEach(r => {
 				r.checked = (r.value === mode);
@@ -214,37 +226,34 @@ const DIRECT_TRACK_URL = 'https://smashcustommusic.net/brstm/' + document.queryS
 			let mode = getCookie("bgmode") || "free";
 			if (mode === "fallin") {
             	const img = document.createElement('img');
-            	img.src = '1.webp'; // Votre image
+            	img.src = '1.webp';
             	img.classList.add('falling-image');
 
-            	// --- Personnalisation aléatoire ---
-            
 				const randomScale = Math.floor(Math.random() * 720) - 360;
 				img.style.setProperty('--scale-y', randomScale + "deg");
 			
-            	// Position horizontale aléatoire (0 à 100% de la largeur)
             	img.style.left = Math.random() * 300 + "vh";
             
-            	// Taille aléatoire (entre 30px et 80px)
+
             	const size = Math.random() * (200 - 30) + 30;
             	img.style.width = size + "px";
             
-            	// Vitesse de chute aléatoire (entre 3s et 8s)
+
             	const duration = Math.random() * (3 - 1) + 1;
             	img.style.animationDuration = duration + "s";
             
-            	// Opacité aléatoire pour donner de la profondeur
+
             	img.style.opacity = Math.random() * (1 - 0.4) + 0.4;
 
             	document.body.appendChild(img);
 
-            	// Supprimer l'élément après l'animation pour ne pas ralentir le navigateur
+
             	setTimeout(() => {
                 	img.remove();
             	}, duration * 1000);
 			}
         }
-		// Charger progression
+
 		updateDisplay();
 		applyColor();
 		applyBackground();

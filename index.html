@@ -1,12 +1,15 @@
-<html>
+<!DOCTYPE html>
 <head>
-  <link rel="stylesheet" href="styles.css">
+	<meta charset="UTF-8">
+	<title>Mini Cookie Clicker - Consentement</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="player.css">
 </head>
 <body>
 
-<input type="image" src="gcookie.png" id="cookie-manager-btn" onclick="openPopup()" width="60" height="60">
+	<input type="image" src="gcookie.png" id="cookie-manager-btn" onclick="openPopup()" width="60" height="60">
 
-	<!-- Pop-up du mini-jeu -->
+
 	<div id="cookie-popup">
 		<h2>cookies gestion</h2>
 		<p>Colected cookies : <span id="cookie-count">0</span></p>
@@ -19,7 +22,6 @@
 			<button class="store-btn" onclick="buyUpgrade('auto')">Auto-click (30 cookies)</button>
 		</div>
 
-		<!-- Sélecteur de couleur -->
 		<div id="color-menu" style="margin-top:15px; display:none;">
 			<h3>🎨 Choose your background</h3>
 				<label>
@@ -30,10 +32,10 @@
 					<input type="radio" name="bgmode" value="preset-gradient" onchange="setBackgroundMode(this.value)">Signature color
 				</label><br>
 				<label>
-					<input type="radio" name="bgmode" value="preset-image" onchange="setBackgroundMode(this.value)">Suyu
-				</label><br>
-  <label>
 					<input type="radio" name="bgmode" value="r34" onchange="setBackgroundMode(this.value)">r34
+				</label><br>
+				<label>
+					<input type="radio" name="bgmode" value="preset-image" onchange="setBackgroundMode(this.value)">Suyu
 				</label><br>
 				<label>
 					<input type="radio" name="bgmode" value="persimage" checked onchange="setBackgroundMode(this.value)">Image
@@ -44,7 +46,7 @@
 				<label>
 					<input type="radio" name="bgmode" value="fallin" checked onchange="setBackgroundMode(this.value)">Boykisser
 				</label><br>
-	 <label>
+				<label>
 					<input style="display: none;" type="number" min="0" max="99999" value="48798" id="aaa">
 					<input type="image" src="arrow.png" id="Gui-btn" onclick="openGPopup()" width="32" height="32"><button type="button" id="play-direct">Play tomodachi</button>
 				</label><br>
@@ -58,7 +60,8 @@
 			<button class="refuse-btn" onclick="refuseCookies()" disabled>Deny</button>
 		</div>
 	</div>
+
+	<script src="dist/bundle.min.js?version=202"></script>
+	<script src="script.js"></script>
 </body>
-<script src="dist/bundle.min.js?version=202"></script>
-<script src="script.js"></script>
 </html>
