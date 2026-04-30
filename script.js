@@ -114,11 +114,18 @@
 
 		function refuseCookies() {
 			alert("You denied cookies >:3");
-    		document.cookie.split(';').forEach(cookie => {
-        		const eqPos = cookie.indexOf('=');
-        		const name = eqPos > -1 ? cookie.substring(0, eqPos) : cookie;
-        		document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
-   		 	});
+    		document.cookie.split(";").forEach(cookie => {
+				const name = cookie.split("=")[0].trim();
+
+				const paths = ["/", location.pathname];
+				const domains = [location.hostname, "." + location.hostname];
+
+				paths.forEach(path => {
+					domains.forEach(domain => {
+						document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=${path};domain=${domain}`;
+					});
+				});
+			});
 			document.body.style.backgroundColor = "";
 			closePopup();
 		}
