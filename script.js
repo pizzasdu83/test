@@ -180,18 +180,15 @@
 				if (colorPicker) colorPicker.value = color; 
 			} else if (mode === "preset-gradient") {
 				document.body.classList.add("gradient");
-				document.body.style.animation = "none";
 			} else if (mode === "r34") {
 				document.body.classList.add("r34");
 				document.body.style.animation = "none";
 			} else if (mode === "preset-image") {
 				document.body.classList.add("image");
-				document.body.style.animation = "none";
 			} else if (mode === "fallin") {
 				document.body.classList.add("fallin");
-				document.body.style.animation = "block";
+				document.body.style.animation = "arcEnCiel 10s linear infinite";
 			} else if (mode === "persimage") {
-				document.body.style.animation = "none";
 				const input = document.getElementById("avatar");
 
 				input.addEventListener("change", function () {
