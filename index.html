@@ -1,67 +1,33 @@
-<!DOCTYPE html>
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>Mini Cookie Clicker - Consentement</title>
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="player.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
+  font-size: 17px;
+}
+
+#badapp {
+  position: fixed;
+  padding: 0;
+  height: 100vh;
+}
+</style>
 </head>
 <body>
 
-	<input type="image" src="gcookie.png" id="cookie-manager-btn" onclick="openPopup()" width="60" height="60">
+<video autoplay muted loop id="badapp">
+  <source src="a.webm" type="video/webm">
+</video>
 
+<script>
+var video = document.getElementById("badapp");
+</script>
 
-	<div id="cookie-popup">
-		<h2>cookies gestion</h2>
-		<p>Colected cookies : <span id="cookie-count">0</span></p>
-		<div id="big-cookie" onclick="clickCookie()"></div>
-		<p>🎯 Goal : <span id="goal">1000</span> cookies</p>
-
-		<div id="store">
-			<h3>Market</h3>
-			<button class="store-btn" onclick="buyUpgrade('click')">+1 per clic (10 cookies)</button>
-			<button class="store-btn" onclick="buyUpgrade('auto')">Auto-click (30 cookies)</button>
-		</div>
-
-		<div id="color-menu" style="margin-top:15px; display:none;">
-			<h3>🎨 Choose your background</h3>
-				<label>
-					<input type="radio" name="bgmode" value="free" checked onchange="setBackgroundMode(this.value)">Free color
-				</label><br>
-					<input type="color" id="colorPicker" onchange="setColor(this.value)">
-				<label>
-					<input type="radio" name="bgmode" value="preset-gradient" onchange="setBackgroundMode(this.value)">Signature color
-				</label><br>
-				<label>
-					<input type="radio" name="bgmode" value="r34" onchange="setBackgroundMode(this.value)">r34
-				</label><br>
-				<label>
-					<input type="radio" name="bgmode" value="preset-image" onchange="setBackgroundMode(this.value)">Suyu
-				</label><br>
-				<label>
-					<input type="radio" name="bgmode" value="persimage" checked onchange="setBackgroundMode(this.value)">Image
-				</label>
-				<label>
-				<input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
-				</label><br>
-				<label>
-					<input type="radio" name="bgmode" value="fallin" checked onchange="setBackgroundMode(this.value)">Boykisser
-				</label><br>
-				<label>
-					<input style="display: none;" type="number" min="0" max="99999" value="48798" id="aaa">
-					<input type="image" src="arrow.png" id="Gui-btn" onclick="openGPopup()" width="32" height="32"><button type="button" id="play-direct">Play tomodachi</button>
-				</label><br>
-			
-				<button class="clrInterval" onclick="clearInterval(fallin);" enabled>stop boykissing</button>
-				
-		</div>
-
-		<div id="choices" style="margin-top:15px;">
-			<button class="accept-btn" onclick="acceptCookies()" enabled>Accept</button>
-			<button class="refuse-btn" onclick="refuseCookies()" disabled>Deny</button>
-		</div>
-	</div>
-
-	<script src="dist/bundle.min.js?version=202"></script>
-	<script src="script.js"></script>
 </body>
 </html>
